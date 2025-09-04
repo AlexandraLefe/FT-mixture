@@ -549,3 +549,4 @@ SARS-CoV-2 variants: Application to wastewater samples (ANRS0160)*
 \[2\] *VirPool: model-based estimation of SARS-CoV-2 variant proportions
 in wastewater samples* (Gafurov, A. et al., 2022)
 〈[https://doi.org/10.1186/s12859-022-05100-3](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-022-05100-3)〉
+# FT-mixture
