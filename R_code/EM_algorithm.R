@@ -11,11 +11,11 @@ logsumexp = function(x){
   if (is.nan(res)) res=-Inf; return(res)
 }
 
-# this file contains the following functions : em_ft_clust, em_initialization and run_algorithm functions
+# this file contains the following functions : em_ft_clust, em_initialization and ft_clust functions
 # em_ft_clust and em_initialization functions share same input values such that they are presented together. 
 
-#' em_ft_clust function implementation of the EM algorithm for FT-clustering
-#' em_initialization function used for initializing em_ft_clust. em_initialization is the implementation of the EM algorithm over a model solely composed of non-neutral groups (ie zero neutral and K+1 non neutral groups for initializing em_ft_clust composed of one neutral and K non-neutral groups) 
+#' em_ft_clust function is the implementation of the EM algorithm for FT-clustering
+#' em_initialization function returns data driven initial values for em_ft_clust. It is the implementation of an EM algorithm over a model solely composed of non-neutral groups (s.t. the frequency trajectory of the neutral group has sae distribution as non-neutral groups).
 #' @param data a mandatory list containing 
 #'  data$x: n.nT matrix of mutation counts where n is the number of mutations and nT is the number of time points. The character vector of mutation names as row names is optional. The character vector of dates as column names is mandatory.
 #'  data$d: n.nT matrix of read depths at related positions 
