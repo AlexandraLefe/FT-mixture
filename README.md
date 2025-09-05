@@ -93,7 +93,7 @@ This function returns a list composed of
 
     -   a *n* × (*m*+1) matrix *d* of read depth at related positions.
 
--   `z`: a vector of size *n*. *z* ∈ {0, …, *K*}<sup>*n*</sup> where
+-   `z`: a vector of size *n* of group assignment. *z* ∈ {0, …, *K*}<sup>*n*</sup> where
     value 0 stands for the neutral group.
 
 ``` r
