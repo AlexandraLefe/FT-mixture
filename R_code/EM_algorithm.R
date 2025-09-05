@@ -24,7 +24,7 @@ logsumexp = function(x){
 #' Either eta or K must be provided. If eta is provided, it is used as initial values. If eta is NULL, K is used for a random initialization of eta. 
 #' @param niter single value for the maximal number of iterations (default: 2000)
 #' @param tol single value for the tolerance on parameters for the algorithm to break, converge (default: 1e-3)
-#' @param verbose boolean vector. If TRUE, the log-likelihood and parameter estimates are provided at each iteration (default : TRUE for em_ft_clust and FALSE for em_initialization)
+#' @param verbose boolean vector. If TRUE, the log-likelihood and parameter estimates are provided at each iteration (default: FALSE)
 em_ft_clust <- function(data, K = NULL, eta = NULL, niter = 2000, tol = 1e-3, verbose = FALSE) {
   
   if(is.null(eta)) {
@@ -76,7 +76,7 @@ em_ft_clust <- function(data, K = NULL, eta = NULL, niter = 2000, tol = 1e-3, ve
       
       ## update alpha and beta (intercept for the neutral group)
       weights = eta[,1];
-      weights[weights==0]=1e-300 # vglm does not support null weights
+      weights[weights==0] = 1e-300 # vglm does not support null weights
       fit = vglm(cbind(apply(x,1,sum), apply(d-x, 1, sum)) ~ 1,family = betabinomialff(), weights = weights)
       alpha = Coef(fit)[1] # careful Coef and not coef function
       beta = Coef(fit)[2] # careful Coef and not coef function
@@ -124,6 +124,7 @@ em_ft_clust <- function(data, K = NULL, eta = NULL, niter = 2000, tol = 1e-3, ve
     }
     
     rownames(eta) = rownames(x)
+    colnames(eta) = paste0("G",0:K)
     size.smallest.group = min(table(apply(eta,1,which.max)))
       
     return(list(loglik = loglik, pi = pi, mu = mu, s = s, alpha = alpha, beta = beta, eta = eta, size.smallest.group = size.smallest.group)) 
